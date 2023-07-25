@@ -22,7 +22,7 @@ services:
       - npm_db
 
   npm_db:
-    image: 'jc21/mariadb-aria:10.4.12'
+    image: 'jc21/mariadb-aria:10.4.15-innodb'
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: 'npm'

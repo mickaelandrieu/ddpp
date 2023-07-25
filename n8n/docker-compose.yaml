@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  n8n:
+    container_name: n8n
+    ports:
+      - 5678
+    environment:
+      - WEBHOOK_URL=https://automation.article-1.eu/
+      - EXECUTIONS_PROCESS=main
+    volumes:
+      - ./.n8n:/home/node/.n8n
+    image: n8nio/n8n
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: ddpp

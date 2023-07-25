@@ -1,0 +1,16 @@
+!.gitkeep
+
+# NPM
+nginx_proxy_manager/npm-data
+nginx_proxy_manager/npm-db
+nginx_proxy_manager/letsencrypt
+
+# Metabase
+metabase/db-data/
+metabase/metabase-data/
+
+# N8N
+n8n/.n8n/
+
+# Portainer
+portainer/portainer-data

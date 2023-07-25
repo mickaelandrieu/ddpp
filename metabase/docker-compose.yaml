@@ -10,8 +10,7 @@ services:
         - POSTGRES_DB=metabase
       volumes:
         - ./db-data:/var/lib/postgresql/data
-      networks:
-        - postgres-network
+
     metabase:
       volumes:
         - ./metabase-data:/metabase-data
@@ -23,16 +22,13 @@ services:
         - MB_DB_PASS=docker_metabase
         - MB_DB_HOST=metabase_db
       ports:
-        - 3000:3000
+        - 3000
       image: metabase/metabase
       restart: always
       depends_on:
         - metabase_db
-      networks:
-        - postgres-network
+
 networks:
   default:
     external: true
     name: ddpp
-  postgres-network:
-    driver: bridge
