@@ -1,0 +1,9 @@
+users:
+  # authelia hash-password -- 'mypass'
+  dataops:
+    displayname: "Data Ops"
+    password: "$argon2id$v=19$m=65536,t=3,p=4$ckpVMWJOd1pTK2JMMmJJYw$XM83wqJXJ52bY3n8VWL3PdukyEYVog605wZeGvNvs0M"
+    email: dataops@ddpp.ovh
+    groups:
+      - admins
+      - data

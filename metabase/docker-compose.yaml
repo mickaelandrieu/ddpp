@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+    metabase_db:
+      image: postgres:14
+      restart: always
+      environment:
+        - POSTGRES_PASSWORD=docker_metabase
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=metabase
+      volumes:
+        - ./db-data:/var/lib/postgresql/data
+      networks:
+        - postgres-network
+    metabase:
+      volumes:
+        - ./metabase-data:/metabase-data
+      environment:
+        - MB_DB_TYPE=postgres
+        - MB_DB_DBNAME=metabase
+        - MB_DB_PORT=5432
+        - MB_DB_USER=postgres
+        - MB_DB_PASS=docker_metabase
+        - MB_DB_HOST=metabase_db
+      ports:
+        - 3000:3000
+      image: metabase/metabase
+      restart: always
+      depends_on:
+        - metabase_db
+      networks:
+        - postgres-network
+networks:
+  default:
+    external: true
+    name: ddpp
+  postgres-network:
+    driver: bridge

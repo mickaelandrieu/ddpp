@@ -1,0 +1,38 @@
+version: '3.3'
+services:
+  npm_app:
+    image: 'jc21/nginx-proxy-manager:2.10.3'
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 81:81
+    environment:
+      DB_MYSQL_HOST: "npm_db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
+      # Uncomment this if IPv6 is not enabled on your host
+      # DISABLE_IPV6: 'true'
+    volumes:
+      - ./npm-data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    depends_on:
+      - npm_db
+
+  npm_db:
+    image: 'jc21/mariadb-aria:10.4.12'
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - ./npm-db/mysql:/var/lib/mysql
+
+networks:
+  default:
+    external: true
+    name: ddpp
