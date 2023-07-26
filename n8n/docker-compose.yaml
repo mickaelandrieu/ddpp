@@ -5,7 +5,7 @@ services:
     ports:
       - 5678
     environment:
-      - WEBHOOK_URL=https://automation.article-1.eu/
+      - WEBHOOK_URL=https://automation.ddpp.ovh/
       - EXECUTIONS_PROCESS=main
     volumes:
       - ./.n8n:/home/node/.n8n
