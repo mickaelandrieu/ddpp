@@ -24,8 +24,9 @@ docker network create ddpp
 - NGINX Proxy Manager ✅
 - Portainer ✅
 - Metabase ✅
-- Matomo
+- Matomo ✅
 - N8N ✅
+- Clickhouse ✅
 - Prefect
 - Authelia
 - Airbyte
