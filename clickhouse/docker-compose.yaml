@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  clickhouse:
+    image: yandex/clickhouse-server:latest
+    ports:
+      - 8123
+      - 9000
+      - 9009
+    volumes:
+      - ./clickhouse_data:/var/lib/clickhouse
+    environment:
+      - CLICKHOUSE_USER=clickhouse
+      - CLICKHOUSE_PASSWORD=P4ssw0rd
+      - CLICKHOUSE_DB=data_warehouse
+      - CLICKHOUSE_HTTP_PORT=8123
+      - CLICKHOUSE_TCP_PORT=9000
