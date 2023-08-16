@@ -91,6 +91,14 @@ n8n is a "free, fair code, self-hosted workflow automation tool." In simple term
 
 > `docker-compose up -f nginx_proxy_manager/docker-compose.yaml -d`
 
+**If you use Nginx Proxy Manager, you must enable Websockets support.**
+
+### Clickhouse
+
+ClickHouse is an open-source column-oriented database management system (DBMS) that is optimized for fast, real-time analytic queries against very large datasets.
+
+> `docker-compose up -f clickhouse/docker-compose.yaml -d`
+
 ## License
 
 This project is under MIT license, and every project used is under open source license and available for commercial use.

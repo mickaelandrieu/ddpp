@@ -11,6 +11,10 @@ metabase/metabase-data/
 
 # N8N
 n8n/.n8n/
+n8n/postgres-data
+n8n/redis-data
+n8n/postgres-data/.gitkeep
+n8n/redis-data/.gitkeep
 
 # Portainer
 portainer/portainer-data
