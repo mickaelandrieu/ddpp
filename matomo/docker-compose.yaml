@@ -2,18 +2,20 @@ version: '3.3'
 
 services:
   matomo_db:
-    image: mariadb
+    image: mysql:8.1.0
     command: --max-allowed-packet=64MB
     environment:
-      - MARIADB_ROOT_PASSWORD=m@tomo_pwd
+      - MYSQL_ROOT_PASSWORD=m@tomo_pwd
     env_file:
       - ./db.env
     ports:
       - '3308:3306'
+    volumes:
+      - ./db-data:/var/lib/mysql
     restart: always
 
   matomo:
-    image: matomo
+    image: matomo:4.15.1
     environment:
       - MATOMO_USERNAME=matomo_user
       - MATOMO_PASSWORD=m@tomo_pwd
