@@ -99,6 +99,19 @@ ClickHouse is an open-source column-oriented database management system (DBMS) t
 
 > `docker-compose up -f clickhouse/docker-compose.yaml -d`
 
+### Install a Data Platform
+
+By default, it will install the following softwares:
+
+* clickhouse as a data warehouse
+* n8n as a tiny data ingestion tool and marketing automation platform
+* metabase as a business intelligence tool
+* and nginx_proxy_manager to map every container to a domain name
+
+```sh
+make
+```
+
 ## License
 
 This project is under MIT license, and every project used is under open source license and available for commercial use.
