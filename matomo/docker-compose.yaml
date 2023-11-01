@@ -3,7 +3,11 @@ version: '3.3'
 services:
   matomo_db:
     image: mysql:8.1.0
-    command: --max-allowed-packet=64MB
+    command: >
+          bash -c "
+          chmod 644 /etc/mysql/conf.d/*.cnf
+          && /usr/local/bin/docker-entrypoint.sh mysqld
+          "
     environment:
       - MYSQL_ROOT_PASSWORD=m@tomo_pwd
     env_file:
@@ -11,27 +15,25 @@ services:
     ports:
       - '3308:3306'
     volumes:
+      - ./.docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./db-data:/var/lib/mysql
     restart: always
 
-  matomo:
+  matomo_app:
     image: matomo:4.15.1
-    environment:
-      - MATOMO_USERNAME=matomo_user
-      - MATOMO_PASSWORD=m@tomo_pwd
-      - MATOMO_EMAIL=dataops@ppdd.org
-      - MATOMO_HOST=matomo_db
+    env_file:
+      - ./db.env
     ports:
       - '8087:80'
       - '4446:443'
     volumes:
       - ./config:/var/www/html/config:rw
     depends_on:
-      - db
+      - matomo_db
     restart: always
 
 volumes:
-  matomo:
+  matomo_app:
 
 networks:
   default:

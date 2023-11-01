@@ -5,6 +5,12 @@ nginx_proxy_manager/npm-data
 nginx_proxy_manager/npm-db
 nginx_proxy_manager/letsencrypt
 
+# Matomo
+matomo/db-data/
+matomo/config/.htaccess
+matomo/config/*.php
+matomo/config/environment/*.php
+
 # Metabase
 metabase/db-data/
 metabase/metabase-data/
