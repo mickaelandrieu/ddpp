@@ -41,6 +41,14 @@ services:
   n8n_app_worker:
     <<: *shared
     command: worker
+    deploy:
+      replicas: 4
+    depends_on:
+      - n8n_app
+  
+  n8n_app_webhook:
+    <<: *shared
+    command: webhook
     depends_on:
       - n8n_app
 
