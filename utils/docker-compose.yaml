@@ -1,0 +1,23 @@
+version: '3.3'
+
+services:
+  test_database:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: salesdb
+    ports:
+      - "5455:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - ddpp
+
+volumes:
+  postgres-data:
+
+networks:
+  ddpp:
+    external: true
